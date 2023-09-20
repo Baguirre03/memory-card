@@ -39,6 +39,8 @@ export default function CardContainer() {
     fetchData().catch(console.error);
   }, []);
 
+  console.log(cards);
+
   function resetAll() {
     const copy = [...cards];
     const reset = copy.map((card) => {
@@ -80,14 +82,18 @@ export default function CardContainer() {
 
   //cut string
   return (
-    <div>
-      <div>{score}</div>
-      <div>{bestScore}</div>
+    <div className="card-container">
+      <div>Current: {score}</div>
+      <div>Best: {bestScore}</div>
       {cards.map((link, index) => (
-        <div onClick={() => handleClick(index)} key={link.id}>
+        <div className="card-holder" key={link.id}>
           <div>{link.name}</div>
           <div>{link.id}</div>
-          <img id={link.id} src={link.string}></img>
+          <img
+            onClick={() => handleClick(index)}
+            id={link.id}
+            src={link.string}
+          ></img>
           <div>{link.clicked.toString()}</div>
         </div>
       ))}
