@@ -16,6 +16,7 @@ async function getCards() {
 export default function CardContainer() {
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
 
   const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
@@ -46,19 +47,30 @@ export default function CardContainer() {
         clicked: false,
       };
     });
-    setCards(reset);
+    const shuffled = shuffle(reset);
+    setCards(shuffled);
+    setScore(0);
+  }
+
+  function handleBest() {
+    if (score >= bestScore) {
+      setBestScore(score + 1);
+    }
   }
 
   function handleScore(card) {
     if (card.clicked) {
       setScore(0);
-      resetAll();
     } else {
       setScore(score + 1);
+      handleBest();
     }
   }
 
   function handleClick(index) {
+    if (cards[index].clicked) {
+      return resetAll();
+    }
     handleScore(cards[index]);
     const copy = [...cards];
     copy[index] = { ...copy[index], clicked: true };
@@ -70,6 +82,7 @@ export default function CardContainer() {
   return (
     <div>
       <div>{score}</div>
+      <div>{bestScore}</div>
       {cards.map((link, index) => (
         <div onClick={() => handleClick(index)} key={link.id}>
           <div>{link.name}</div>
