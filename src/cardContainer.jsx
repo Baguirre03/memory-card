@@ -13,28 +13,39 @@ async function getCards() {
   }
 }
 
+function mapData(data) {
+  return data.results.map((card) => {
+    let string = card.img.substring(0, card.img.indexOf("png") + "png".length);
+    return {
+      ...card,
+      img: string,
+      clicked: false,
+    };
+  });
+}
+
 export default function CardContainer() {
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [won, setWon] = useState(false);
 
   const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCards();
-      const final = data.results.map((card) => {
-        let string = card.img.substring(
-          0,
-          card.img.indexOf("png") + "png".length
-        );
-        return {
-          ...card,
-          img: string,
-          clicked: false,
-        };
-      });
+      const final = mapData(data);
+      // const final = data.results.map((card) => {
+      //   let string = card.img.substring(
+      //     0,
+      //     card.img.indexOf("png") + "png".length
+      //   );
+      //   return {
+      //     ...card,
+      //     img: string,
+      //     clicked: false,
+      //   };
+      // });
       setCards(final);
     };
     fetchData().catch(console.error);
