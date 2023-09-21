@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -20,11 +22,12 @@ header {
     justify-content: space-between;
     background-color: var(--light-brown);
     padding: 10px;
-    color:var(--tan)
+    color:var(--tan);
+    font-family: 'Oswald', sans-serif;
 }
 
 h3 {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     color: var(--tan);
 }
 
@@ -36,7 +39,9 @@ main {
 
 .card-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
     gap: 10px;
 }
 
@@ -49,18 +54,29 @@ main {
     border: 1px solid var(--dark-brown);
     box-shadow: 3px 3px 3px black;
     padding: 1rem;
-    border-radius: 1rem;
     background-color: var(--green);
     color: var(--tan);
     gap: 3px;
-    max-height: 40vh;
+    height: 85%;
+    width: 70%;
+}
+
+.name {
+    font-family: 'Oswald', sans-serif;
 }
 
 .card:hover {
     cursor: pointer;
+    background-color: var(--dark-tan);
+    color: black;
+    border: 1px solid black;
+    transition: all .4s;
+    border-radius: 1rem;
 }
 
 .card img {
+    border-radius: 1rem;
+    border: 1px solid black;
     height: 80%;
     width: 80%;
 }
@@ -68,4 +84,58 @@ main {
 .card p {
     font-weight: bold;
     font-size: 1.3rem;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    margin-left: 4px;
+    margin-bottom: 6px;
+    align-self: flex-start;
+    gap: 2px;
+}
+
+li {
+    font-family: 'Roboto', sans-serif;
+}
+
+.winner-display {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: absolute;
+    align-self: center;
+    top: 40%;
+    background-color: var(--tan);
+    border: 1px solid black;
+    box-shadow: 3px 3px 3px var(--dark-brown);
+    padding: 2rem;
+    border-radius: 1rem;
+    font-family: 'Oswald', sans-serif;
+    animation: winner 1s 
+}
+
+.winner-display button {
+    background-color: var(--dark-brown);
+    border-radius: 1rem;
+    padding: 4px;
+    border: 1px var(--green) solid;
+    color: var(--tan);
+}
+
+.winner-display button:hover {
+    cursor: pointer;
+    background-color: var(--green);
+    color: var(--tan);
+    border: 1px var(--light-brown) solid;
+    transition: .2s;
+}
+
+@keyframes winner {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
 }

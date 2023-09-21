@@ -3,7 +3,7 @@ export default function Card({ data, index, handleClick }) {
   return (
     <div onClick={() => handleClick(index)} className="card">
       <img id={data.id} src={data.img}></img>
-      <p>{data.name}</p>
+      <p className="name">{data.name}</p>
       <ul>
         {data.abilities.map((ability) => (
           <li key={ability}>{ability}</li>

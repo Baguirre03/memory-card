@@ -58,7 +58,7 @@ export default function App() {
   function CheckScore() {
     return score === 9 ? (
       <h2 className="winner-display">
-        Congrats! You won!<button onClick={resetAll}>Reset game?</button>
+        Congrats, you won!<button onClick={resetAll}>Reset game?</button>
       </h2>
     ) : null;
   }
@@ -79,6 +79,7 @@ export default function App() {
   }
 
   function handleClick(index) {
+    if (score === 9) return;
     if (cards[index].clicked) {
       return resetAll();
     }
@@ -92,7 +93,7 @@ export default function App() {
   return (
     <div className="container">
       <header>
-        <h1 className="header">Memory Card</h1>
+        <h1 className="header">Attack on Titan Memory Card</h1>
         <ScoreBoard score={score} bestScore={bestScore}></ScoreBoard>
       </header>
       <main>
