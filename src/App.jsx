@@ -1,6 +1,5 @@
 import CardContainer from "./cardContainer";
 import { useEffect, useState } from "react";
-import Card from "./card";
 import ScoreBoard from "./scoreboard";
 
 const url = "https://api.attackontitanapi.com/titans";
@@ -57,10 +56,10 @@ export default function App() {
   }
 
   function CheckScore() {
-    return score == 9 ? (
-      <div>
-        you won! You won!<button onClick={resetAll}>reset game?</button>
-      </div>
+    return score === 9 ? (
+      <h2 className="winner-display">
+        Congrats! You won!<button onClick={resetAll}>Reset game?</button>
+      </h2>
     ) : null;
   }
 
@@ -91,11 +90,15 @@ export default function App() {
   }
 
   return (
-    <main className="container">
-      <h1 className="header">Memory Card</h1>
-      <ScoreBoard score={score} bestScore={bestScore}></ScoreBoard>
+    <div className="container">
+      <header>
+        <h1 className="header">Memory Card</h1>
+        <ScoreBoard score={score} bestScore={bestScore}></ScoreBoard>
+      </header>
+      <main>
+        <CardContainer cards={cards} handleClick={handleClick}></CardContainer>
+      </main>
       <CheckScore></CheckScore>
-      <CardContainer cards={cards} handleClick={handleClick}></CardContainer>
-    </main>
+    </div>
   );
 }

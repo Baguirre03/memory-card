@@ -1,9 +1,14 @@
 export default function Card({ data, index, handleClick }) {
+  data.abilities.splice(2);
   return (
-    <div className="card-holder">
-      <div>{data.name}</div>
-      <div>{data.id}</div>
-      <img onClick={() => handleClick(index)} id={data.id} src={data.img}></img>
+    <div onClick={() => handleClick(index)} className="card">
+      <img id={data.id} src={data.img}></img>
+      <p>{data.name}</p>
+      <ul>
+        {data.abilities.map((ability) => (
+          <li key={ability}>{ability}</li>
+        ))}
+      </ul>
     </div>
   );
 }
