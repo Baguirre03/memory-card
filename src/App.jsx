@@ -1,6 +1,7 @@
 import CardContainer from "./cardContainer";
 import { useEffect, useState } from "react";
 import ScoreBoard from "./scoreboard";
+import Instructions from "./instructions";
 
 const url = "https://api.attackontitanapi.com/titans";
 
@@ -99,6 +100,7 @@ export default function App() {
       <main>
         <CardContainer cards={cards} handleClick={handleClick}></CardContainer>
       </main>
+      <Instructions></Instructions>
       <CheckScore></CheckScore>
     </div>
   );

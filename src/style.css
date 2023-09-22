@@ -131,6 +131,39 @@ li {
     transition: .2s;
 }
 
+.instructions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: absolute;
+    align-self: center;
+    top: 40%;
+    background-color: #294023;
+    color: var(--tan);
+    border: 1px solid black;
+    box-shadow: 3px 3px 20px black;
+    padding: 2rem;
+    border-radius: 1rem;
+    font-family: 'Oswald', sans-serif;
+    animation: winner 1s 
+}
+
+.instructions button {
+    background-color: var(--dark-tan);
+    border-radius: 1rem;
+    padding: 4px;
+    border: 1px var(--green) solid;
+    color: black;
+}
+
+.instructions button:hover {
+    cursor: pointer;
+    background-color: var(--dark-brown);
+    color: var(--tan);
+    border: 1px black solid;
+    transition: .2s;
+}
+
 @keyframes winner {
     0% {
         opacity: 0%;
@@ -139,3 +172,4 @@ li {
         opacity: 100%;
     }
 }
+
